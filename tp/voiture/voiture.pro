@@ -11,7 +11,8 @@ TEMPLATE = app
 
 !win32 {
     CONFIG += link_pkgconfig
-    PKGCONFIG += glew glu
+#    PKGCONFIG += glew glu
+    LIBS += -lglew -framework OpenGL -framework GLUT
 }
 
 win32 {
@@ -21,7 +22,7 @@ win32 {
 }
 
 DESTDIR = $$PWD
-INCLUDEPATH += src/main src/prog3d
+INCLUDEPATH += src/main src/prog3d /opt/local/include
 DEPENDPATH += src/main src/prog3d
 
 HEADERS += \
