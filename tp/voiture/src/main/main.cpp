@@ -4,7 +4,7 @@
   @author F. Aubert
   **/
 
-#include <QtGui/QApplication>
+#include <QApplication>
 
 #include "MainWindow.h"
 

@@ -33,3 +33,4 @@
 
 *.o
 .DS_STORE
+.metadata
