@@ -36,7 +36,7 @@ Once again go into the preferences
 Then click on
     Desktop(default)
 
-And then at the Qt Version line, choose "Qt 4.8.4 (System)"
+And then at the Qt Version line, choose <u>Qt 4.8.4 (System)</u>
 
 Now Qt Creator is set up :)
 
