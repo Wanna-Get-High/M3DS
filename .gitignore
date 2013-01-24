@@ -34,3 +34,4 @@
 *.o
 .DS_Store
 .metadata
+*.user
