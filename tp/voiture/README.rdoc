@@ -1,0 +1,57 @@
+= How to setup QT for MAC
+
+== QT install
+
+First get {QT libraries}{http://releases.qt-project.org/qt4/source/qt-mac-opensource-4.8.4.dmg}
+
+Do not forget to take the {debug libraries}{http://releases.qt-project.org/qt4/source/qt-mac-opensource-4.8.4-debug-libs.dmg}
+
+Download them and install them
+
+I have experienced issues with QT 5.0 because it was installing libraries at random places.
+
+Once everything is set properly, it's time to install {QT Creator}{http://releases.qt-project.org/qtcreator/2.6.1/qt-creator-mac-opensource-2.6.1.dmg}
+
+Again, just press next a lot (and do not forget to fully read the licenses ^^)
+
+== Set up QT Creator
+
+=== QT version
+First go into preferences to set the QT version
+    QT Creator > Preferences > Build&Run > Qt Versions
+
+Click Add then select
+    /usr/bin/qmake
+
+Since Finder is super cool, you can't see /usr
+The quick solution is to make an alias of it
+
+=== Set Kits
+
+Now, you can configure the kit. 
+Once again go into the preferences
+    QT Creator > Preferences > Build&Run > Kits
+
+Then click on
+    Desktop (default)
+
+And then at the Qt Version line, choose "Qt 4.8.4 (System)"
+
+Now Qt Creator is set up :)
+
+== Install Glew
+
+Go on {glew website}{http://glew.sourceforge.net/}, and fetch the sources (This have been done with version 1.9.0).
+Take the tgz version.
+<b>!! Do not select the zip file, it's corrupted !!</b>
+
+Exctract it
+    $ tar -xvf glew-1.9.0.tgz
+
+And install it
+    $ cd glew-1.9.0
+    $ make
+    $ sudo make install
+    
+If everything goes fine, then the <i>voiture</i> project should now compile and run
+
