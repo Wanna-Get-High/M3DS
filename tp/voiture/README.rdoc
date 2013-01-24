@@ -24,6 +24,7 @@ Click Add then select
     /usr/bin/qmake
 
 Since Finder is super cool, you can't see <i>/usr</i>
+
 The quick solution is to make an alias of it
 
 === Set Kits
@@ -33,7 +34,7 @@ Once again go into the preferences
     QT Creator > Preferences > Build&Run > Kits
 
 Then click on
-    <i>Desktop(default)</i>
+    Desktop(default)
 
 And then at the Qt Version line, choose "Qt 4.8.4 (System)"
 
