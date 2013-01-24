@@ -23,7 +23,7 @@ First go into preferences to set the QT version
 Click Add then select
     /usr/bin/qmake
 
-Since Finder is super cool, you can't see /usr
+Since Finder is super cool, you can't see <i>/usr</i>
 The quick solution is to make an alias of it
 
 === Set Kits
@@ -33,7 +33,7 @@ Once again go into the preferences
     QT Creator > Preferences > Build&Run > Kits
 
 Then click on
-    Desktop (default)
+    <i>Desktop(default)</i>
 
 And then at the Qt Version line, choose "Qt 4.8.4 (System)"
 
@@ -43,6 +43,7 @@ Now Qt Creator is set up :)
 
 Go on {glew website}[http://glew.sourceforge.net/], and fetch the sources (This have been done with version 1.9.0).
 Take the tgz version.
+
 <b>!! Do not select the zip file, it's corrupted !!</b>
 
 Exctract it
