@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by Qt Creator 2.6.1, 2013-01-23T19:27:04. -->
-=======
-<!-- Written by Qt Creator 2.6.1, 2013-01-24T12:48:21. -->
->>>>>>> 8ec1c9d1ec5e8d5ac842abbe855bf0149c932b6f
+<!-- Written by Qt Creator 2.6.1, 2013-01-23T12:05:36. -->
 <qtcreator>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -55,15 +51,9 @@
  <data>
   <variable>ProjectExplorer.Project.Target.0</variable>
   <valuemap type="QVariantMap">
-<<<<<<< HEAD
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 5.0.0 GCC 64bit (SDK)</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 5.0.0 GCC 64bit (SDK)</value>
-   <value type="QByteArray" key="ProjectExplorer.ProjectConfiguration.Id">qt.500.gcc_64.essentials_kit</value>
-=======
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop</value>
-   <value type="QByteArray" key="ProjectExplorer.ProjectConfiguration.Id">{98ff5211-80cc-4535-a67e-f43855ca5503}</value>
->>>>>>> 8ec1c9d1ec5e8d5ac842abbe855bf0149c932b6f
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 5.0.0 clang 64bit (SDK)</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 5.0.0 clang 64bit (SDK)</value>
+   <value type="QByteArray" key="ProjectExplorer.ProjectConfiguration.Id">qt.500.clang_64.essentials_kit</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
@@ -85,7 +75,7 @@
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
       <value type="QByteArray" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.MakeStep</value>
       <value type="bool" key="Qt4ProjectManager.MakeStep.Clean">false</value>
-      <value type="QString" key="Qt4ProjectManager.MakeStep.MakeArguments"></value>
+      <value type="QString" key="Qt4ProjectManager.MakeStep.MakeArguments">pkg-config glu</value>
       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeCommand"></value>
      </valuemap>
      <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">2</value>
@@ -115,11 +105,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QByteArray" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4BuildConfiguration</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">2</value>
-<<<<<<< HEAD
-    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">/media/sf_m3ds_tp/voiture-build-Desktop_Qt_5_0_0_GCC_64bit_SDK-Debug</value>
-=======
-    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">/Users/benjamin/Downloads/voiture-build-Desktop-Debug</value>
->>>>>>> 8ec1c9d1ec5e8d5ac842abbe855bf0149c932b6f
+    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">/Users/WannaGetHigh/workspace/M1S2/M3DS/tp/voiture-build-Desktop_Qt_5_0_0_clang_64bit_SDK-Debug</value>
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
@@ -170,11 +156,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QByteArray" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4BuildConfiguration</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">0</value>
-<<<<<<< HEAD
-    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">/media/sf_m3ds_tp/voiture-build-Desktop_Qt_5_0_0_GCC_64bit_SDK-Release</value>
-=======
-    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">/Users/benjamin/Downloads/voiture-build-Desktop-Release</value>
->>>>>>> 8ec1c9d1ec5e8d5ac842abbe855bf0149c932b6f
+    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">/Users/WannaGetHigh/workspace/M1S2/M3DS/tp/voiture-build-Desktop_Qt_5_0_0_clang_64bit_SDK-Release</value>
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.BuildConfigurationCount">2</value>
@@ -225,11 +207,7 @@
     </valuelist>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">voiture</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-<<<<<<< HEAD
-    <value type="QByteArray" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/media/sf_m3ds_tp/voiture/voiture.pro</value>
-=======
-    <value type="QByteArray" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/benjamin/Documents/Education/M1/M3DS/tp/voiture/voiture.pro</value>
->>>>>>> 8ec1c9d1ec5e8d5ac842abbe855bf0149c932b6f
+    <value type="QByteArray" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/WannaGetHigh/workspace/M1S2/M3DS/tp/voiture/voiture.pro</value>
     <value type="int" key="Qt4ProjectManager.Qt4RunConfiguration.BaseEnvironmentBase">2</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">voiture.pro</value>
@@ -252,11 +230,7 @@
  </data>
  <data>
   <variable>ProjectExplorer.Project.Updater.EnvironmentId</variable>
-<<<<<<< HEAD
-  <value type="QString">{0c1420d7-a41d-427d-9d45-dd7bb5094147}</value>
-=======
-  <value type="QString">{1b7dba19-32ae-4029-8352-a9395249b7eb}</value>
->>>>>>> 8ec1c9d1ec5e8d5ac842abbe855bf0149c932b6f
+  <value type="QString">{6bd288e4-5f8e-4a85-8e66-e1f81f77181f}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.Updater.FileVersion</variable>
