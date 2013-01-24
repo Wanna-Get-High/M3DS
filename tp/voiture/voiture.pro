@@ -9,9 +9,13 @@ QT       += core gui opengl
 
 TEMPLATE = app
 
-!win32 {
+linux{
     CONFIG += link_pkgconfig
-#    PKGCONFIG += glew glu
+    PKGCONFIG += glew glu
+}
+
+macx{
+    CONFIG += link_pkgconfig
     LIBS += -lglew -framework OpenGL -framework GLUT
 }
 

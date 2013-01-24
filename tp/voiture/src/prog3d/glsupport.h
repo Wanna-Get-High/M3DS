@@ -4,7 +4,8 @@
 #include <GL/glew.h>
 
 #include <QGLWidget>
-#include <GLUT/glut.h>
+
+
 
 
 #endif // GLSUPPORT_H
