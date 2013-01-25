@@ -7,6 +7,10 @@
 
 #include "Vector3.h"
 #include "Quaternion.h"
+#include "math.h"
+
+#define MAX_ANGLE 10
+#define MIN_ANGLE -10
 
 class Voiture {
   prog3d::Vector3 _position;
@@ -15,6 +19,8 @@ class Voiture {
   float _angle; // rotation roue
   float _braquage; // rotation/essieu
 
+private:
+  void tracerRayon();
 public:
   Voiture();
   void drawWorld();
@@ -26,10 +32,12 @@ public:
   void tracerCarrosserie();
 
   void angle(double a) {_angle=a;}
-  void braquage(double b) {_braquage=b;}
+  void braquage(double b) {_braquage=fmin(fmax(b,-10),10);}
 
   void avancer();
   void reculer();
+  void gauche();
+  void droite();
 };
 
 #endif
