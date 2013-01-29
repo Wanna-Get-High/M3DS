@@ -18,10 +18,13 @@ class Voiture {
 
   float _angle; // rotation roue
   float _braquage; // rotation/essieu
+  float _delta_angle;
+  double _factor;
 
 private:
   void tracerRayon();
 public:
+  //Base() : i(0), ch(0) {}
   Voiture();
   void drawWorld();
   void drawLocal();
