@@ -57,3 +57,15 @@ And install it
     
 If everything goes fine, then the <i>voiture</i> project should now compile and run
 
+== Troubleshoot 
+
+=== Mountain Lion
+If you have at compilation tons of errors related to <i>cout</i>, then
+	open /usr/local/Qt4.8/mkspecs/common/g++-macx.conf
+and change
+	-mmacosx-version-min=10.5
+to
+	-mmacosx-version-min=10.7
+
+It should fix the problem
+

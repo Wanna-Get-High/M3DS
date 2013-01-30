@@ -1,7 +1,11 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'GLView.h'
 **
+<<<<<<< HEAD
 ** Created: Mon Jan 28 15:41:18 2013
+=======
+** Created: Wed Jan 30 00:42:33 2013
+>>>>>>> 1991ee8fcf875cc66b057332c9af08f1f1b7e6d3
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
 **
 ** WARNING! All changes made in this file will be lost!
