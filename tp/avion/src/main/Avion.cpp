@@ -28,17 +28,17 @@ Utilisez les attributs suivants :
 void Avion::drawLocal() {
     glColor3f(0,0.2,0.5);
     glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
-    glBegin(GL_QUAD_STRIP);
-    for (int i = 0 ; i < _face.size() ; i++){
 
+    for (int i = 0 ; i < _face.size() ; i++){
+        glBegin(GL_POLYGON);
         for(int j = 0; j < _face[i].size(); j++){
             Vector3 vertex = _vertex[_face[i][j]];
             glNormal3dv(_normalVertex[_face[i][j]].dv());
             glVertex3f(vertex.x(), vertex.y(), vertex.z());
         }
-
+        glEnd();
     }
-    glEnd();
+
 }
 
 void Avion::drawWorld() {
