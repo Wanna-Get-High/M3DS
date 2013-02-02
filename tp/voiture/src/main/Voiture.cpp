@@ -8,6 +8,8 @@ using namespace prog3d;
 using namespace std;
 
 #define FACTOR -83
+#define ACC 0.1
+#define DEC 0.04
 
 // ******************************************************************
 // méthodes à compléter lors du TP
@@ -95,26 +97,35 @@ void Voiture::drawLocal() {
 void Voiture::drawWorld() {
     Vector3 u;
     double a;
-    _orientation.copyToAngleAxis(&a,&u); // permet de covertir le quaternion en rotation d'angle a et d'axe u, qu'on pourra alors donner à OpenGL
-
+    _orientation.copyToAngleAxis(&a,&u); // permet de convertir le quaternion en rotation d'angle a et d'axe u, qu'on pourra alors donner à OpenGL
     glPushMatrix();
     glTranslatef(_position.x(),_position.y(),_position.z());
     glRotatef(a, u.x(), u.y(), u.z());
+    bouger();
     drawLocal();
     glPopMatrix();
 }
 
-void Voiture::avancer() {
-    _angle += _delta_angle;
-    _position = _position + _orientation * Vector3(_delta_angle/_factor,0,0);
-    _orientation.rotate(_braquage/8,Vector3(0,1,0));
+void Voiture::bouger(){
 
+    if (_acceleration > 0){
+        _acceleration -= DEC;
+    }
+    else if(_acceleration < 0){
+        _acceleration += DEC;
+    }
+
+    _angle += _acceleration/1.5;
+    _position = _position + _orientation * Vector3(_acceleration/_factor,0,0);
+    _orientation.rotate((_acceleration*_braquage)/50,Vector3(0,1,0));
+}
+
+void Voiture::avancer() {
+    _acceleration = fmin((_acceleration + ACC), 5);
 }
 
 void Voiture::reculer() {
-    _angle -= _delta_angle;
-    _position = _position + _orientation * Vector3(-_delta_angle/_factor,0,0);
-    _orientation.rotate(-_braquage/8,Vector3(0,1,0));
+    _acceleration = fmax((_acceleration - ACC), -5);
 }
 
 void Voiture::droite() {
@@ -132,6 +143,6 @@ void Voiture::gauche() {
 Voiture::Voiture() {
     _orientation.setIdentity();
     _position.set(0,0,0);
-    _delta_angle = 5;
+    _acceleration = 0;
     _factor = -85;
 }

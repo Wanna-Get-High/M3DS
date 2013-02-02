@@ -5,11 +5,11 @@ using namespace prog3d;
 using namespace std;
 
 Avion::Avion() {
-  _increment=1.0;
-  _accelerate=0.01;
-  _vitesse=0.0;
-  _orientation.setIdentity();
-  _position.set(0,0,0);
+    _increment=1.0;
+    _accelerate=0.01;
+    _vitesse=0.0;
+    _orientation.setIdentity();
+    _position.set(0,0,0);
 }
 
 Avion::~Avion() {
@@ -26,58 +26,77 @@ Utilisez les attributs suivants :
   - _face[i].size() donne le nombre de sommets de la face i
 */
 void Avion::drawLocal() {
-  glColor3f(0,0.2,0.5);
+    glColor3f(0,0.2,0.5);
+    glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
+    glBegin(GL_QUAD_STRIP);
+    for (int i = 0 ; i < _face.size() ; i++){
 
+        for(int j = 0; j < _face[i].size(); j++){
+            Vector3 vertex = _vertex[_face[i][j]];
+            glNormal3dv(_normalVertex[_face[i][j]].dv());
+            glVertex3f(vertex.x(), vertex.y(), vertex.z());
+        }
+
+    }
+    glEnd();
 }
 
 void Avion::drawWorld() {
-  glPushMatrix();
+    glPushMatrix();
 
-  drawLocal();
+    double angle;
+    Vector3 u;
+    _orientation.copyToAngleAxis(&angle,&u);
 
-  glPopMatrix();
+    glTranslatef(_position.x(),_position.y(), _position.z());
+    glRotatef(angle, u.x(),u.y(),u.z());
+
+    drawLocal();
+
+    glPopMatrix();
 }
 
 void Avion::move() {
+    _position = _position + _orientation * Vector3(0,0,_vitesse);
 }
 
 void Avion::pitchUp() {
-  _angleX+=_increment;
+    _orientation.rotate(_increment, Vector3(1,0,0));
 }
 
 void Avion::pitchDown() {
-  _angleX-=_increment;
+    _orientation.rotate(-_increment,Vector3(1,0,0));
 }
 
 void Avion::rollLeft() {
-  _angleZ+=_increment;
+    _orientation.rotate(-_increment, Vector3(0,0,1));
 }
 
 void Avion::rollRight() {
-  _angleZ-=_increment;
+    _orientation.rotate(_increment, Vector3(0,0,1));
 }
 
 void Avion::yawLeft() {
-  _angleY+=_increment;
+    _orientation.rotate(_increment, Vector3(0,1,0));
 }
 
 void Avion::yawRight() {
-  _angleY-=_increment;
+    _orientation.rotate(-_increment, Vector3(0,1,0));
 }
 
 void Avion::accelerate() {
-  _vitesse+=_accelerate;
+    _vitesse+=_accelerate;
 }
 
 void Avion::decelerate() {
-  _vitesse-=_accelerate;
+    _vitesse-=_accelerate;
 }
 
 // lecture fichier .obj
 void Avion::read(const string &filename) {
-  this->MeshObj::read(filename);
-  this->scaleInBoxMin(-1,1,-1,1,-1,1);
-  this->computeNormal();
+    this->MeshObj::read(filename);
+    this->scaleInBoxMin(-1,1,-1,1,-1,1);
+    this->computeNormal();
 }
 
 

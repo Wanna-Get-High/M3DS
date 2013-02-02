@@ -79,6 +79,7 @@ private:
   bool _pressRollRight;    //
   bool _pressAccelerate;
   bool _pressDecelerate;
+  Avion _avion;
 
 
   prog3d::Trackball _trackball; // contrôle du placement de la scène à la souris

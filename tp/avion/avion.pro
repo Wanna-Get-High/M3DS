@@ -9,7 +9,7 @@ QT       += core gui opengl
 
 TEMPLATE = app
 
-unix {
+linux {
     CONFIG += link_pkgconfig
     PKGCONFIG += glew glu
 }
@@ -26,8 +26,9 @@ win32 {
   LIBS+= -lglew32s -lopengl32 -lglu32
 }
 
+RESOURCES =
 DESTDIR = $$PWD
-INCLUDEPATH += src/main src/prog3d
+INCLUDEPATH += src/main src/prog3d /opt/local/include
 DEPENDPATH += src/main src/prog3d
 
 HEADERS += \
@@ -65,6 +66,8 @@ SOURCES += \
     src/main/GLView.cpp \
     src/main/Camera.cpp \
     src/main/Avion.cpp
+
+OTHER_FILES +=
 
 
 

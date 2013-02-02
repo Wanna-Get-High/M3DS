@@ -5,7 +5,9 @@
 
 #include <QGLWidget>
 
-
+//#ifdef __linux
+//    #include <GL/glu.h>
+//#endif
 
 
 #endif // GLSUPPORT_H

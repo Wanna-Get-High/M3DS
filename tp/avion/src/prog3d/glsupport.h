@@ -4,7 +4,10 @@
 #include <GL/glew.h>
 
 #include <QGLWidget>
-#include <GL/glu.h>
+
+#ifdef __linux
+    #include <GL/glu.h>
+#endif
 
 
 #endif // GLSUPPORT_H

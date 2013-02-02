@@ -18,11 +18,12 @@ class Voiture {
 
   float _angle; // rotation roue
   float _braquage; // rotation/essieu
-  float _delta_angle;
+  float _acceleration;
   double _factor;
 
 private:
   void tracerRayon();
+  void bouger();
 public:
   //Base() : i(0), ch(0) {}
   Voiture();
