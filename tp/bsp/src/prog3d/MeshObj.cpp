@@ -35,10 +35,12 @@ void MeshObj::check() {
 
 void MeshObj::read(const string &filename) {
   fstream file;
+  //string str = filename.
   file.open(filename.c_str(),ios::in);
   file.width(20);
   if (!file.is_open()) {
-    throw Error(string("cant load file data").append(filename),__LINE__,__FILE__);
+      cout << string("cant load file data ").append(filename) << endl;
+    throw Error(string("cant load file data ").append(filename),__LINE__,__FILE__);
   }
 
   char s[200]; // dummy to read non-interpreted line

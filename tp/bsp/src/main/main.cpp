@@ -5,11 +5,16 @@
   **/
 
 #include <QtGui/QApplication>
-
+#include <iostream>
 #include "MainWindow.h"
+
+using namespace std;
 
 int main(int argc, char *argv[])
 {
+    char c[1000];
+    getcwd(c,900);
+    cout << c << endl;
   // initialize the Qt application
   QApplication application(argc, argv);
 

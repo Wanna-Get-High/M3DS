@@ -201,8 +201,7 @@ void GLView::keyReleaseEvent(QKeyEvent *event) {
   **/
 void GLView::initData() {
     // cameras setup : pour dernier exercice
-    //_avion.read("/Users/benjamin/Documents/Education/M1/M3DS/tp/avion/media/biplane.obj");
-   _avion.read("/Users/WannaGetHigh/workspace/M1S2/M3DS/tp/avion/media/biplane.obj");
+   _avion.read("media/biplane.obj");
     _cam1.position(Vector3(-2,4,10));
     _cam2.position(Vector3(10,0,0));
     Quaternion q;
