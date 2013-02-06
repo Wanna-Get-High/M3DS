@@ -9,6 +9,7 @@ QT       += core gui opengl
 
 TEMPLATE = app
 
+
 linux {
     CONFIG += link_pkgconfig
     PKGCONFIG += glew glu
@@ -18,6 +19,9 @@ macx {
     INCLUDEPATH += /opt/local/include
     CONFIG += link_pkgconfig
     LIBS += -lglew -framework OpenGL -framework GLUT
+    MEDIA_FILES.files = media/biplane.obj media/mystere.obj
+    MEDIA_FILES.path = Contents/Resources
+    QMAKE_BUNDLE_DATA += MEDIA_FILES
 }
 
 win32 {
@@ -25,6 +29,8 @@ win32 {
   DEFINES+=GLEW_STATIC _STDCALL_SUPPORTED
   LIBS+= -lglew32s -lopengl32 -lglu32
 }
+
+
 
 RESOURCES =
 DESTDIR = $$PWD
