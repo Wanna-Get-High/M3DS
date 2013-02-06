@@ -1,0 +1,9 @@
+# Blender3D v245 OBJ File: <memory>
+# www.blender3d.org
+o None_None
+v -1.5 -1 -1
+v -2.5 2.5 0
+v -0.5 2.5 2
+v 0.5 -1 1
+
+f 1 2 3 4
