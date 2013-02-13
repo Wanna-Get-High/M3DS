@@ -39,6 +39,9 @@ ArbreBSP *ObjetBSP::consBSP(const vector<FaceBSP *> &tabFace) {
     res=new ArbreBSP();
     // TODO : A COMPLETER (construire listeNegative et listePositive; mettre le pivot comme noeud de l'arbre res)
 
+
+
+
     // appels récursifs
     res->left(consBSP(listeNegative));
     res->right(consBSP(listePositive));

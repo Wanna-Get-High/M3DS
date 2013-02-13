@@ -94,15 +94,39 @@ void FaceBSP::separate(const FaceBSP &f) {
 
 
     int size = _tabVertex.size();
-    int sizeF = f._tabVertex.size();
 
-    for (int i = 0; i < sizeF; i++) {
-        if (/*neg par rap a normal*/) {
-            vertexNegative.push_back(createVertex(interection(f._tabVertex[i])));
+    Vector3 last_point = this->point(size-1);
+    ESign last_sign = f.sign(last_point);
+
+
+    for (int i = 0; i < size; i++) {
+
+        Vector3 current_point = this->point(i);
+        ESign current_sign = f.sign(current_point);
+
+        if(current_sign != last_sign){
+            Vector3 intersection = f.intersection(current_point, last_point);
+            vertexNegative.push_back(createVertex(intersection));
+            vertexPositive.push_back(createVertex(intersection));
+        }
+
+        last_point = current_point;
+        last_sign = current_sign;
+
+        if (current_sign == SIGN_MINUS) {
+            vertexNegative.push_back(createVertex(current_point));
         } else {
-            vertexPositive.push_back(createVertex(interection(f._tabVertex[i])));
+            vertexPositive.push_back(createVertex(current_point));
         }
     }
+
+
+//    if ( f.sign(this->point(0)) != f.sign(this->point(size-1))){
+//        Vector3 intersection = this->intersection(this->point(0), this->point(size-1));
+//        vertexNegative.push_back(createVertex(intersection));
+//        vertexPositive.push_back(createVertex(intersection));
+//    }
+
 
 
     // A LAISSER ! (construction des faces selon un tableau)
