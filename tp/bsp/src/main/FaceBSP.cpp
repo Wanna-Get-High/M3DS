@@ -92,9 +92,17 @@ void FaceBSP::separate(const FaceBSP &f) {
     vertexNegative.clear();
     vertexPositive.clear();
 
-    // TODO : à compléter
 
+    int size = _tabVertex.size();
+    int sizeF = f._tabVertex.size();
 
+    for (int i = 0; i < sizeF; i++) {
+        if (/*neg par rap a normal*/) {
+            vertexNegative.push_back(createVertex(interection(f._tabVertex[i])));
+        } else {
+            vertexPositive.push_back(createVertex(interection(f._tabVertex[i])));
+        }
+    }
 
 
     // A LAISSER ! (construction des faces selon un tableau)
