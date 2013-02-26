@@ -2,4 +2,8 @@ Benjamin Van Ryseghem
 Francois Lepan
 
 
-Il nous manque l'exercice 1 sur les courbes de Hermite sinon le reste est fait.
+Tout fonctionne.
+
+Nous avons rencontré quelques problèmes quant à la compréhension de la résolution du problème de Hermite ainsi que l'implémentation de la fonction CatmullRomCurve::setup.
+
+Mais après coup nous avons compris comment faire :)
