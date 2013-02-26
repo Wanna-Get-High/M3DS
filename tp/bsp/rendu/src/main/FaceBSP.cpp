@@ -94,7 +94,6 @@ void FaceBSP::separate(const FaceBSP &f) {
     vertexPositive.clear();
 
     int size = _tabVertex.size();
-
     int last_index = size -1;
     Vector3 last_point = this->point(last_index);
     ESign last_sign = f.sign(last_point);
