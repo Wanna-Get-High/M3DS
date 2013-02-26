@@ -94,13 +94,13 @@ void FaceBSP::separate(const FaceBSP &f) {
 
 
     int size = _tabVertex.size();
-    int sizeF = f._tabVertex.size();
+    //int sizeF = f._tabVertex.size();
 
-    for (int i = 0; i < sizeF; i++) {
-        if (/*neg par rap a normal*/) {
-            vertexNegative.push_back(createVertex(interection(f._tabVertex[i])));
+    for (int i = 0; i < size; i++) {
+        if (f.sign(_tabVertex[i]->point())) {
+            vertexNegative.push_back(createVertex(_tabVertex[i]->point()));
         } else {
-            vertexPositive.push_back(createVertex(interection(f._tabVertex[i])));
+            vertexPositive.push_back(createVertex(_tabVertex[i]->point()));
         }
     }
 
