@@ -56,11 +56,14 @@ void CatmullRomCurve::setup() {
     // les points intermédiaires doivent être fixés par la méthode vue en cours
     // (parallèle au segment [point(i-1),point(i+1)]).
 
+    // the size factor of the segment that will be parallele
+    k = 0.4;
+
     int size = nbPoint();
     for (int i = 1; i < size-1; i++) {
         parallele = Vector3(point(i-1),point(i+1));
-        intermediate(i-1,1,point(i)-(parallele/2));
-        intermediate(i,0,point(i)+(parallele/2));
+        intermediate(i-1,1,point(i)-(parallele/2)*k);
+        intermediate(i,0,point(i)+(parallele/2)*k);
     }
 }
 
