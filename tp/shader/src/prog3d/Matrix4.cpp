@@ -7,8 +7,16 @@
 #include "Error.h"
 #include "Quaternion.h"
 #include "Matrix3.h"
-#include <GL/gl.h>
 
+#ifdef __linux
+    #include <GL/glu.h>
+#endif
+
+#if defined(__APPLE__)
+    #include <GLUT/glut.h>
+#else
+    #include <gl/glut.h>
+#endif
 
 
 /*
@@ -329,10 +337,6 @@ void Matrix4::invert(const Matrix4 &a) {
         temp.subScaleColumn(k,i,t2);
     }
   }
-
-
-
-
 }
 
 

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/media">
+        <file>biplane.obj</file>
+    </qresource>
+</RCC>

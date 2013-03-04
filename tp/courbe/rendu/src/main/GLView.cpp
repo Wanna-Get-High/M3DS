@@ -119,6 +119,7 @@ void GLView::updateData() {
 void GLView::mousePressEvent(QMouseEvent *event) {
   Vector2 mouse(event->x(),event->y());
   if (event->button()==Qt::LeftButton) {
+      cout << "left" << endl;
     _mouseLeftButton=true;
     _modeMouse=TRACKBALL;
 
@@ -127,11 +128,13 @@ void GLView::mousePressEvent(QMouseEvent *event) {
 
   }
   if (event->button()==Qt::RightButton) {
+      cout << "right" << endl;
        _whichInteraction->selectNearest(mouse,10);
        _modeMouse=MOVE_POINT;
        _mouseRightButton=true;
   }
   if (event->button()==Qt::MidButton) {
+      cout << "middle" << endl;
     if (_modeDraw==DRAW_BEZIER) {
       Vector3 add=_interactBezier.addEnd(mouse);
       _bezier.addEnd(add);
