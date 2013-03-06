@@ -264,6 +264,17 @@ void GLView::drawSquare() {
   // On affecte à la variable image du shader la valeur 0 (i.e. l'unité de texture 0).
   glUniform1i(locationImage, 0);
 
+  // LocationImage contient alors un "identifiant" pour la variable "image" du shader.
+  locationImage = glGetUniformLocation(_shaderSimple.id(),"image1");
+
+  // On affecte à la variable image du shader la valeur 1 (i.e. l'unité de texture 1).
+  glUniform1i(locationImage, 1);
+
+  // LocationImage contient alors un "identifiant" pour la variable "image" du shader.
+  locationImage = glGetUniformLocation(_shaderSimple.id(),"image2");
+
+  // On affecte à la variable image du shader la valeur 1 (i.e. l'unité de texture 1).
+  glUniform1i(locationImage, 2);
 
   _square.drawBuffer();
   _shaderSimple.disable();
@@ -290,7 +301,8 @@ void GLView::drawCowOutline() {
 void GLView::drawCowLight() {
   glColor3f(0,0.6,0.5);
 
-  glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+  //glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+  glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
 
   UtilGL::drawText("Lighting shader",Vector2(0,0));
   _shaderLight.enable();

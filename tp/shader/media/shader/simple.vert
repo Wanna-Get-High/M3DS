@@ -16,5 +16,5 @@ void main() {
     // .st renvoi un vec2 correspondant aux coordonnées s et t
     texCoord = gl_MultiTexCoord0.st;
 
-    gl_Position=gl_ProjectionMatrix*gl_ModelViewMatrix*gl_Vertex;
+    gl_Position = gl_ProjectionMatrix*gl_ModelViewMatrix*gl_Vertex;
 }

@@ -52,6 +52,14 @@ void Square::initBuffer() {
     glGenBuffers(1, &_bufferTexCoord[0]);
     glBindBuffer(GL_ARRAY_BUFFER, _bufferTexCoord[0]);
     glBufferData (GL_ARRAY_BUFFER, 8 * sizeof(GLfloat), vertexTexture ,GL_STATIC_DRAW);
+
+    glGenBuffers(1, &_bufferTexCoord[1]);
+    glBindBuffer(GL_ARRAY_BUFFER, _bufferTexCoord[1]);
+    glBufferData (GL_ARRAY_BUFFER, 8 * sizeof(GLfloat), vertexTexture ,GL_STATIC_DRAW);
+
+    glGenBuffers(1, &_bufferTexCoord[2]);
+    glBindBuffer(GL_ARRAY_BUFFER, _bufferTexCoord[2]);
+    glBufferData (GL_ARRAY_BUFFER, 8 * sizeof(GLfloat), vertexTexture ,GL_STATIC_DRAW);
 }
 
 /**
@@ -63,9 +71,6 @@ void Square::drawBuffer() {
     //------------------------------------------------//
     glEnableClientState(GL_VERTEX_ARRAY);
     //glEnableClientState(GL_COLOR_ARRAY);
-
-    glClientActiveTexture(GL_TEXTURE0);
-    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 
     //------------------------------------------------//
@@ -87,14 +92,48 @@ void Square::drawBuffer() {
 
 
     //------------------------------------------------//
-    //                      Texture                   //
+    //                      Texture0                  //
     //------------------------------------------------//
+    glClientActiveTexture(GL_TEXTURE0);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
     // on bind l'image texture au carré
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D,_idTexture[0]);
 
     // le buffer courant des données de la première texture
     glBindBuffer (GL_ARRAY_BUFFER, _bufferTexCoord[0]);
+    // le 2 correspond au coordonnées de texture: u, v
+    glTexCoordPointer(2 ,GL_FLOAT,0 ,0);
+
+    //------------------------------------------------//
+    //                      Texture1                  //
+    //------------------------------------------------//
+
+    glClientActiveTexture(GL_TEXTURE1);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    // on bind l'image texture au carré
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D,_idTexture[1]);
+
+    // le buffer courant des données de la première texture
+    glBindBuffer (GL_ARRAY_BUFFER, _bufferTexCoord[1]);
+    // le 2 correspond au coordonnées de texture: u, v
+    glTexCoordPointer(2 ,GL_FLOAT,0 ,0);
+
+    //------------------------------------------------//
+    //                      Texture2                  //
+    //------------------------------------------------//
+
+    glClientActiveTexture(GL_TEXTURE2);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    // on bind l'image texture au carré
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D,_idTexture[2]);
+
+    // le buffer courant des données de la première texture
+    glBindBuffer (GL_ARRAY_BUFFER, _bufferTexCoord[2]);
     // le 2 correspond au coordonnées de texture: u, v
     glTexCoordPointer(2 ,GL_FLOAT,0 ,0);
 
@@ -107,7 +146,7 @@ void Square::drawBuffer() {
     //                      Disable                   //
     //------------------------------------------------//
     glDisableClientState (GL_VERTEX_ARRAY);
-    //glDisableClientState(GL_COLOR_ARRAY);
+    glDisableClientState(GL_COLOR_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 

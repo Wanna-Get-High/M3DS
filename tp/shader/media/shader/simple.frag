@@ -7,6 +7,10 @@ varying vec2 texCoord;
 // uniform veut dire que la variable image est alloué dans le programme OpenGl -> GLView::drawSquare()
 uniform sampler2D image;
 
+uniform sampler2D image1;
+
+uniform sampler2D image2;
+
 void main() {
     // rouge
     //gl_FragColor=vec4(1.0,0.0,0.0,0.0);
@@ -25,5 +29,14 @@ void main() {
     //gl_FragColor = vec4(texCoord.s,texCoord.t,0,0);
 
     // on affecte a gl_FragColor la couleur de l'image aux coordonnées de texture
-    gl_FragColor = texture2D(image,texCoord);
+    //gl_FragColor = texture2D(image,texCoord);
+
+    // on affect les trois textures pour les images de brique
+    // image = brique, image1 = blanc noir, image2 = logo univ
+    // on veut que la texture entre le logo et la brique soit == en quantité
+    // alors que pour le cercle blanc on veut que lorsque se soit 0 -> on met 0 pareil pour 1.
+    float lembda = 0.7;
+    vec4 text1 = (1-lembda)*texture2D(image,texCoord) + lembda*texture2D(image2,texCoord);
+    gl_FragColor = text1;
+
 }
