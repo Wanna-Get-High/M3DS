@@ -70,7 +70,7 @@ void Entity::initBuffer() {
 
     // NORMAL_POINT
     glBindBuffer(GL_NORMAL_ARRAY, _normalBuffer);
-    // le 3 correspond aux 3 indices qui forme le triangle
+    // le 3 correspond aux x, y, z de la normale
     glBufferData (GL_NORMAL_ARRAY, 3 * size_pts * sizeof(GLfloat), normalPts ,GL_STATIC_DRAW);
 
     // on supprime les tableaux de la mémoire centrale (tout est maintenant dans la mémoire OpenGL)
