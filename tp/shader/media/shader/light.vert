@@ -29,12 +29,8 @@ void main() {
     // diffus=max(N·L,0.0)
     float diffus = max(dot(L,N),0.0);
 
-<<<<<<< HEAD
-     couleur=diffus*diffuse;
-=======
      //couleur=diffus*gl_FrontMaterial.diffuse;
 
->>>>>>> 289c4598168d521e563afc370422530046f0a901
 
     //-------------------------------------------------------------------------------//
     //                            Éclairement spéculaire                             //
@@ -52,11 +48,8 @@ void main() {
     if (dot(V,N)<0) N = -N;
 
     // R est donné par 2*(N.L)N−L.
-<<<<<<< HEAD
-    vec3 R = 2*(dot(N,L))*N-L;
-=======
+
     vec3 R = normalize(2*dot(N,L)*N - L);
->>>>>>> 289c4598168d521e563afc370422530046f0a901
 
     // Le coefficient de brillance s est donné par la constante prédéfinie gl_FrontMaterial.shininess
     // (affectée par l’application avec l’instruction glMaterial déjà faite dans le squelette)
