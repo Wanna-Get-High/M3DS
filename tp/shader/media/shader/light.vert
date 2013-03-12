@@ -5,6 +5,7 @@ varying vec4 couleur;
 varying vec3 L;
 varying vec3 N;
 varying vec3 V;
+varying float diffus;
 
 void main() {
 
@@ -25,8 +26,9 @@ void main() {
     N = normalize(gl_NormalMatrix*gl_Normal);
 
     // diffus=max(N·L,0.0)
-    float diffus = max(dot(L,N),0.0);
+    diffus = max(dot(L,N),0.0);
 
+    // Q15
      //couleur=diffus*gl_FrontMaterial.diffuse;
 
 
@@ -35,12 +37,11 @@ void main() {
     //-------------------------------------------------------------------------------//
     // spec =(V · R)^s
 
-
     // V est le vecteur observation=Vertex Eye.  Il faut qu’il soit exprimé dans le repère Eye !
     vec4 vertexEye = gl_ModelViewMatrix*gl_Vertex;
 
     // de signe contraire car dirigé depuis l'utilisateur
-    V = normalize(- vertexEye.xyz);
+    V = normalize(-vertexEye.xyz);
 
     // N doit toujours être orienté vers l'observateur
     if (dot(V,N)<0) N = -N;
@@ -61,7 +62,9 @@ void main() {
     float spec = pow(coef,S);
 
     // Pour la couleur en sortie du vertex, il suffit d’affecter couleur avec la somme du diffus et du spéculaire.
-    couleur = diffus*gl_FrontMaterial.diffuse + spec*gl_FrontMaterial.specular;
+
+    // Q16
+    // couleur = diffus*gl_FrontMaterial.diffuse + spec*gl_FrontMaterial.specular;
 
     gl_Position=gl_ProjectionMatrix*gl_ModelViewMatrix*gl_Vertex;
 }
