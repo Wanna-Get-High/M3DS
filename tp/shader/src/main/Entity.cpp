@@ -69,9 +69,9 @@ void Entity::initBuffer() {
     glBufferData (GL_ELEMENT_ARRAY_BUFFER, 3 * size_face * sizeof(uint), indice ,GL_STATIC_DRAW);
 
     // NORMAL_POINT
-    glBindBuffer(GL_NORMAL_ARRAY, _normalBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, _normalBuffer);
     // le 3 correspond aux x, y, z de la normale
-    glBufferData (GL_NORMAL_ARRAY, 3 * size_pts * sizeof(GLfloat), normalPts ,GL_STATIC_DRAW);
+    glBufferData (GL_ARRAY_BUFFER, 3 * size_pts * sizeof(GLfloat), normalPts ,GL_STATIC_DRAW);
 
     // on supprime les tableaux de la mémoire centrale (tout est maintenant dans la mémoire OpenGL)
     delete[] pts;

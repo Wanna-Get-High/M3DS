@@ -7,6 +7,9 @@ varying vec3 N;
 varying vec3 V;
 
 void main() {
+
+    // tous les vecteur sont normalisé
+
     //-------------------------------------------------------------------------------//
     //                            Éclairement diffus                                 //
     //-------------------------------------------------------------------------------//
@@ -15,11 +18,11 @@ void main() {
     // la direction d’éclairement L est donnée par le built in gl_LightSource[0].position
     // (de type vec4, il s’agit de la valeur affectée par glLightfv(GL_LIGHT0,GL_POSITION,...)
     // par le squelette; la coordonnée w étant assurée à 1 vous pouvez prendre
-    L = gl_LightSource[0].position.xyz;
+    L = normalize(gl_LightSource[0].position.xyz);
 
     // le vecteur N doit être donnée dans le repère observateur pour le calcul d’éclairement,
     // et doit donc subir le repère Eye
-    N = gl_NormalMatrix*gl_Normal;
+    N = normalize(gl_NormalMatrix*gl_Normal);
 
     // diffus=max(N·L,0.0)
     float diffus = max(dot(L,N),0.0);
@@ -32,11 +35,18 @@ void main() {
     //-------------------------------------------------------------------------------//
     // spec =(V · R)^s
 
+
     // V est le vecteur observation=Vertex Eye.  Il faut qu’il soit exprimé dans le repère Eye !
-    V = vec3(gl_ModelViewMatrix*gl_Vertex);
+    vec4 vertexEye = gl_ModelViewMatrix*gl_Vertex;
+
+    // de signe contraire car dirigé vers l'utilisateur
+    V = normalize(- vertexEye.xyz);
+
+    // N doit toujours être orienté vers l'observateur
+    if (dot(V,N)<0) N = -N;
 
     // R est donné par 2*(N.L)N−L.
-    vec3 R = 2*dot(N,L)*N - L;
+    vec3 R = normalize(2*dot(N,L)*N - L);
 
     // Le coefficient de brillance s est donné par la constante prédéfinie gl_FrontMaterial.shininess
     // (affectée par l’application avec l’instruction glMaterial déjà faite dans le squelette)
