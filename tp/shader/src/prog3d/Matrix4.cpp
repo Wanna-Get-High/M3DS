@@ -20,10 +20,7 @@
 
 
 /*
-
-
  F. Aubert
-
 */
 using namespace prog3d;
 using namespace std;

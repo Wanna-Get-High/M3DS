@@ -1,7 +1,7 @@
 #version 120
 
 varying vec4 couleur;
-
+varying vec4 diffuse;
 varying vec3 L;
 varying vec3 N;
 varying vec3 V;
@@ -10,6 +10,8 @@ void main() {
     //-------------------------------------------------------------------------------//
     //                            Éclairement diffus                                 //
     //-------------------------------------------------------------------------------//
+
+    diffuse = vec4 (0,0,1,0);
 
     // la direction d’éclairement L est donnée par le built in gl_LightSource[0].position
     // (de type vec4, il s’agit de la valeur affectée par glLightfv(GL_LIGHT0,GL_POSITION,...)
@@ -23,8 +25,7 @@ void main() {
     // diffus=max(N·L,0.0)
     float diffus = max(dot(L,N),0.0);
 
-    // couleur=diffus*gl_FrontMaterial.diffuse;
-
+     couleur=diffus*diffuse;
 
     //-------------------------------------------------------------------------------//
     //                            Éclairement spéculaire                             //
@@ -33,7 +34,7 @@ void main() {
     // V est le vecteur observation=Vertex Eye.  Il faut qu’il soit exprimé dans le repère Eye !
     V = vec3(gl_ModelViewMatrix*gl_Vertex);
     // R est donné par 2*(N.L)N−L.
-    vec3 R = 2*(N*L)*N-L;
+    vec3 R = 2*(dot(N,L))*N-L;
 
     // Le coefficient de brillance s est donné par la constante prédéfinie gl_FrontMaterial.shininess
     // (affectée par l’application avec l’instruction glMaterial déjà faite dans le squelette)
@@ -47,7 +48,7 @@ void main() {
     float spec = pow(coef,S);
 
     // Pour la couleur en sortie du vertex, il suffit d’affecter couleur avec la somme du diffus et du spéculaire.
-    couleur = diffus*gl_FrontMaterial.diffuse + spec*gl_FrontMaterial.specular;
+    couleur = (diffus*diffuse + spec*gl_FrontMaterial.specular)/2;
 
     gl_Position=gl_ProjectionMatrix*gl_ModelViewMatrix*gl_Vertex;
 }
