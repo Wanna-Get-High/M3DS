@@ -7,34 +7,56 @@ varying vec3 N;
 varying vec3 V;
 
 void main() {
+
+    // tous les vecteur sont normalisé
+
     //-------------------------------------------------------------------------------//
     //                            Éclairement diffus                                 //
     //-------------------------------------------------------------------------------//
+    // diffus=max(N·L,0.0)
 
     diffuse = vec4 (0,0,1,0);
 
     // la direction d’éclairement L est donnée par le built in gl_LightSource[0].position
     // (de type vec4, il s’agit de la valeur affectée par glLightfv(GL_LIGHT0,GL_POSITION,...)
     // par le squelette; la coordonnée w étant assurée à 1 vous pouvez prendre
-    L = gl_LightSource[0].position.xyz;
+    L = normalize(gl_LightSource[0].position.xyz);
 
     // le vecteur N doit être donnée dans le repère observateur pour le calcul d’éclairement,
     // et doit donc subir le repère Eye
-    N = gl_NormalMatrix*gl_Normal;
+    N = normalize(gl_NormalMatrix*gl_Normal);
 
     // diffus=max(N·L,0.0)
     float diffus = max(dot(L,N),0.0);
 
+<<<<<<< HEAD
      couleur=diffus*diffuse;
+=======
+     //couleur=diffus*gl_FrontMaterial.diffuse;
+
+>>>>>>> 289c4598168d521e563afc370422530046f0a901
 
     //-------------------------------------------------------------------------------//
     //                            Éclairement spéculaire                             //
     //-------------------------------------------------------------------------------//
     // spec =(V · R)^s
+
+
     // V est le vecteur observation=Vertex Eye.  Il faut qu’il soit exprimé dans le repère Eye !
-    V = vec3(gl_ModelViewMatrix*gl_Vertex);
+    vec4 vertexEye = gl_ModelViewMatrix*gl_Vertex;
+
+    // de signe contraire car dirigé vers l'utilisateur
+    V = normalize(- vertexEye.xyz);
+
+    // N doit toujours être orienté vers l'observateur
+    if (dot(V,N)<0) N = -N;
+
     // R est donné par 2*(N.L)N−L.
+<<<<<<< HEAD
     vec3 R = 2*(dot(N,L))*N-L;
+=======
+    vec3 R = normalize(2*dot(N,L)*N - L);
+>>>>>>> 289c4598168d521e563afc370422530046f0a901
 
     // Le coefficient de brillance s est donné par la constante prédéfinie gl_FrontMaterial.shininess
     // (affectée par l’application avec l’instruction glMaterial déjà faite dans le squelette)
@@ -45,6 +67,7 @@ void main() {
     // On peut obtenir cela en appliquant simplement en GLSL coef=max(dot(V,R),0.0;
     float coef = max(dot(V,R),0.0);
 
+    // spec =(V · R)^s
     float spec = pow(coef,S);
 
     // Pour la couleur en sortie du vertex, il suffit d’affecter couleur avec la somme du diffus et du spéculaire.
