@@ -39,7 +39,7 @@ void main() {
     // V est le vecteur observation=Vertex Eye.  Il faut qu’il soit exprimé dans le repère Eye !
     vec4 vertexEye = gl_ModelViewMatrix*gl_Vertex;
 
-    // de signe contraire car dirigé vers l'utilisateur
+    // de signe contraire car dirigé depuis l'utilisateur
     V = normalize(- vertexEye.xyz);
 
     // N doit toujours être orienté vers l'observateur
