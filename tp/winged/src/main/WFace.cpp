@@ -26,7 +26,33 @@ using namespace std;
 **     - v->point() donne les coordonnées du sommet v de type Vector3 et un_vector3.dv() donne le tableau des 3 doubles du vecteur (v->point().dv() peut directement être passé à glVertex3dv).
 ** *********************************************************************************** */
 void WFace::draw() {
+//mon code (aurore)
+//je te le mets en commentaire c'est juste pour t'aider
+//    glBegin(GL_POLYGON);
+//    WEdge *Scourant, *Sinit;
+//    WVertex *Ssommetinit,*SsommentCourant;
+//    Scourant = this->edge();
+//    SsommentCourant = Scourant->begin();
+//    Ssommetinit = SsommentCourant;
+//    Sinit = Scourant;
+//    glNormal3dv(_normal.dv());
+//    glVertex3dv(SsommentCourant->point().dv());
+//    do{
+//        if (Scourant->left()==this){
+//            glNormal3dv(_normal.dv());
+//            glVertex3dv(Scourant->end()->point().dv());
+//            Scourant = Scourant->succLeft();
+//            SsommentCourant = Scourant->begin();
+//        }else{
+//            glNormal3dv(_normal.dv());
+//            glVertex3dv(Scourant->begin()->point().dv());
+//            Scourant = Scourant->succRight();
+//            SsommentCourant = Scourant->end();
+//        }
+//    }while(Scourant !=Sinit);
 
+
+//    glEnd();
 
 
 }
