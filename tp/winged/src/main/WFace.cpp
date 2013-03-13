@@ -26,9 +26,35 @@ using namespace std;
 **     - v->point() donne les coordonnées du sommet v de type Vector3 et un_vector3.dv() donne le tableau des 3 doubles du vecteur (v->point().dv() peut directement être passé à glVertex3dv).
 ** *********************************************************************************** */
 void WFace::draw() {
+    glBegin(GL_POLYGON);
 
+    WEdge* edge = this->edge();
+    WVertex * begin = edge->begin();
+    WVertex * end = edge->end();
 
+    glNormal3dv(begin->normal().dv());
+    glVertex3dv(begin->point().dv());
 
+    glNormal3dv(end->normal().dv());
+    glVertex3dv(end->point().dv());
+
+    do {
+        // on ne sait pas pour cette face si elle se trouve a droite du segment ou a gauche
+        if (edge->left() == this) {
+            end = edge->end();
+            glNormal3dv(end->normal().dv());
+            glVertex3dv(end->point().dv());
+            edge = edge->succLeft();
+        } else {
+            begin = edge->begin();
+            glNormal3dv(begin->normal().dv());
+            glVertex3dv(begin->point().dv());
+            edge = edge->succRight();
+        }
+
+    }  while (edge != this->edge());
+
+    glEnd();
 }
 
 /** ************************************************************************************ **/
