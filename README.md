@@ -1,4 +1,9 @@
-M3DS
-====
+##M3DS
 
-Lecture for Master1: M3DS using Qt c++ openGL
+Master 1 Semester 2 working directory. 
+I use these programming language:
+> Qt: http://qt-project.org/
+
+> C++ 
+
+> openGL: http://www.opengl.org/
