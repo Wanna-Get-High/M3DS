@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+
+<light x="3" y="0" z="0" intensity="1" />
+<light x="-3" y="0" z="0" intensity="1" />
+<light x="0" y="3" z="0.2" intensity="1" />
+<light x="0" y="-3" z="-0.3" intensity="1" />
+<light x="0.2" y="0" z="3" intensity="1" />
+<light x="-0.2" y="0" z="-3" intensity="1" />
+
+<node operation="union">
+<primitive type="cylinder">
+  <scale x="1.0" y="1.0" z="5.0" />
+  <translate x="0.0" y="3.0" z="0.0" />
+  <rotate angle="90" x="1" y="0" z="0" />
+  <diffuse red="0.0" green="0.2" blue="0.8" />
+  <specular red="0.2" green="0.7" blue="0.1" shininess="100"/>
+</primitive>
+<node operation="difference">
+  <rotate angle="80" x="0" y="0" z="1" />
+  <primitive type="cone">
+    <scale x="1.0" y="1.0" z="5.0" />
+    <translate x="0.0" y="3.0" z="0.0" />
+    <rotate angle="90" x="1" y="0" z="0" />
+    <diffuse red="0.0" green="0.2" blue="0.8" />
+    <specular red="0.2" green="0.7" blue="0.1" shininess="100"/>
+  </primitive>
+
+  <primitive type="sphere">
+    <translate x="1.0" y="0.0" z="0.3" />
+    <diffuse red="0.0" green="0.7" blue="0.2" />
+    <specular red="0.4" green="0.1" blue="0.1" shininess="100"/>
+  </primitive>
+
+</node>
+</node>
