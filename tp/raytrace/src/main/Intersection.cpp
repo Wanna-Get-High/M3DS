@@ -109,11 +109,11 @@ Ray Intersection::computeRefractRay() const {
 }
 
 void Intersection::setEmpty() {
-	_node=NULL;
+    _node=NULL;
 }
 
 bool Intersection::isEmpty() const {
-	return (_node==NULL);
+    return (_node==NULL);
 }
 
 

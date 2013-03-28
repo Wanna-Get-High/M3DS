@@ -39,11 +39,13 @@ void IntersectionArray::fusion(IntersectionArray &gauche,IntersectionArray &droi
     */
     this->clear(); // initialisation de la fusion
 
+    // on récupère la taille des listes
     unsigned int gSize = gauche.size();
     unsigned int dSize = droite.size();
 
     Intersection* currentIntersection;
 
+    // tant que les deux listes ont encore quelque chose
     while (iG < gSize || iD < dSize) {
 
         // si la liste de gauche est fini

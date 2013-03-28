@@ -44,17 +44,20 @@ Color Raytrace::computeRayColor(const Ray &ray,int profondeur,double contrib) {
     Intersection *inter=_scene->intersection(ray,0.1); // 0.1 pour prendre une intersection qui se trouve un peu devant le "point de départ" (origine) du rayon
 
     if (inter!=NULL) { // existe-t-il une intersection avec la scène ?
-        color=computePhongColor(*inter); // calcul de la couleur par Phong
 
+       color = computePhongColor(*inter); // calcul de la couleur par Phong
 
+       double coeffReflexion = inter->material().reflectionCoefficient();
 
+        if (profondeur >= 0 && coeffReflexion > 0) {
+            Ray refectedRay = inter->computeReflectRay();
+
+            color = ((1-coeffReflexion)*color) + (coeffReflexion*computeRayColor(refectedRay,profondeur-1,coeffReflexion));
+        }
 
         // libération mémoire de inter
         delete inter;
     }
-
-
-
 
     return color;
 }
@@ -103,22 +106,28 @@ Color Raytrace::computePhongColor(const Intersection &intersection) {
     Color result = m.ambient();
 
     for (int i = 0; i< nbLight; i++) {
-        //
+
+        // on récupère la direction de la lumière
         L = _scene->lightPosition(i) - P;
         L.normalize();
 
+        // si on passe deriere l'objet par rapport à l'éclairement on inverse la normale
         if (V.dot(N) < 0) N = -N;
 
+        // coefficient du diffus
         float diffus = max(N.dot(L),0.0);
 
-       //  calcule de l'ombre
+       // calcule de l'ombre //
+
+       // on créer un rayon entre P (point d'intersection du plan) et la source de lumière
        Ray shadow(P,_scene->lightPosition(i) - P);
        Intersection* inter = _scene->intersection(shadow,0.1);
 
-       // si il y a une intersection
+       // si il y a une intersection (i.e un objet sur le chemin du rayon)
         if (inter!=NULL) {
             double lambda = inter->lambda();
-            // si il y a intersection entre la source de lumiere et le point d'intersection.
+            // si il n'y a pas d'intersection entre
+            // la source de lumiere et le point d'intersection on ajoute le diffu
             if (lambda > 1 || lambda < 0) {
                 result += diffus*m.diffuse();
             }
