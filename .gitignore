@@ -38,3 +38,5 @@
 *.user.*
 *.app
 *.obj
+*-Debug
+*-Realease
