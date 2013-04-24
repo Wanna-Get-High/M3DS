@@ -85,11 +85,12 @@ void Engine::collisionPlane() {
 
                     double epsilon = 0.1;
 
-                    // xnew = xold + (1 + epsilon)(H - xOld)
+
                     // H = projection de xOld sur le plan
                     Vector3 xOld = p->position();
                     Vector3 projectionPlan = plane->project(xOld);
 
+                    // xnew = xold + (1 + epsilon)(H - xOld + rayon)
                     posCorrection = (1+epsilon) * (projectionPlan - (xOld - Vector3(0,p->radius(),0)));
 
                     // Vold - [(1-Ɛ)Vold.n]n
