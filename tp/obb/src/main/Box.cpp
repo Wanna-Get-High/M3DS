@@ -75,7 +75,6 @@ void Box::project(const Vector3 &axe,double *mini,double *maxi) const {
 
 void Box::distance(Box *b1, Box *b2, const Vector3 &axe, double *distance, double *direction) {
     double d1,d2,f1,f2;
-    double dist;
 
     b1->project(axe,&d1,&f1);
     b2->project(axe,&d2,&f2);
@@ -89,45 +88,26 @@ void Box::distance(Box *b1, Box *b2, const Vector3 &axe, double *distance, doubl
     // affecter correctement *direction (-1 ou 1 ?)
 
 
-//    if ( d2 < f1 && d2 > d1) {
-//        if (f2 < f1) {
-//            dist = f2-d2;
-//        } else {
-//            dist = f1-d2;
-//        }
-
-//        *direction = 1.0;
-
-//    } else if (f2 > d1 && f2 < f1) {
-
-//        if (d2 > d1) {
-//            dist = f2-d2;
-//        } else {
-//            dist = f2-d1;
-//        }
-
-//        *direction = -1.0;
-//    }
+    if (d2 < f1 && d1 < f2){
+        // collision
+       *distance = min(d2-f1,d1-f2);
+    }
+    else {
+        if (d1 < d2)
+            *distance = abs(d2 - f1);
+        else
+            *distance = abs(f2 - d1);
+    }
 
 
-        if ( d1<d2 && f2<f1 ) {
-            *direction = 1.0;
-            dist = d1-f2;
 
-        } else if ( f1-d2 < ((f2-d2)+(f1-d1)) ) {
-
-            if ( f2<d1 ) {
-                *direction = -1.0;
-                dist = f2-d1;
-            } else {
-                *direction = 1.0;
-                dist = d2-f1;
-            }
-        }
-
-        if (f1-d1 < f2-d2) *direction = -*direction;
-
-    *distance = dist;
+    if ( ((f2-d2)/2 + d2) < ((f1-d1/2)+d1) ){
+        //If the center of b2 is on the left of the center of b1, direction is negative
+        *direction = -.1;
+    }
+    else{
+        *direction = .1;
+    }
 }
 
 
@@ -169,19 +149,20 @@ bool Box::detectCollision(Box *b1,Box *b2,CollisionInfo *collision) {
 
     dist_min = 999999999999999;
 
+  //  cout << "[][][][][][][][][][][][][][][][][]" << endl;
     for (int var = 0; var < 4; var++) {
         distance(b1,b2,axis[var],&dist,&direction);
-
-        if (dist_min<dist) {
+   //     cout << "========================================" << endl;
+        if (abs(dist) < abs(dist_min)) {
             dist_min = dist;
             axe_min = axis[var]*direction;
         }
-
     }
 
 
-   if (dist<0)  {
+   if (dist_min < 0)  {
       // UtilGL::addDebug(b1->position(),b1->position()-direction*dist*axis[0],"",Color(0.2,0.2,1));
+     //  cout << dist_min << endl;
        detect = true;
    }
    // detect=false; // force une non détection (à enlever lorsque la détection est implémentée...).
@@ -208,6 +189,12 @@ bool Box::detectCollision(Box *b1,Box *b2,CollisionInfo *collision) {
         for(unsigned int i=0; i<liste.size(); i++) {
             apply.add(liste[i]);
         }
+
+
+
+
+
+
         apply=apply/liste.size();
 
         collision->applicationPoint(apply);

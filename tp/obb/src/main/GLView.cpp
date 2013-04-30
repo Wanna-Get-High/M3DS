@@ -102,7 +102,8 @@ void GLView::initData() {
   tex2->filterLinear();
 
   // Définition première boite
-  Box *b=new Box();
+  Box *b;
+  //=new Box();
 //  b->dimension(3,2);
 //  b->position(Vector3(-2,5,0));
 //  b->theta(-0.3);
@@ -128,7 +129,7 @@ void GLView::initData() {
   b->dimension(6,2);
   b->position(Vector3(-2,5,0));
   b->theta(0.1);
-  b->mass(2);
+  b->mass(1);
   b->computeInertia();
   b->texture(tex2);
   b->color(Color(0,1,0));
